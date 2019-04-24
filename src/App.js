@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    window.navigator.geolocation.getCurrentPosition(position => {
+    navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         Latitude: position.coords.latitude,
         Longitude: position.coords.longitude
@@ -20,20 +20,11 @@ class App extends Component {
     });
   }
   render() {
-    if (this.state.Longitude && this.state.Latitude) {
-      return (
-        <div>
-          Latitude: {this.state.Latitude}
-          <div>Longitude:{this.state.Longitude}</div>
-          <SeasonDisplay
-            lat={this.state.Latitude}
-            long={this.state.Longitude}
-          />
-        </div>
-      );
-    } else {
-      return <div>LOADING!!</div>;
-    }
+    return (
+      <div>
+        <SeasonDisplay lat={this.state.Latitude} long={this.state.Longitude} />
+      </div>
+    );
   }
 }
 
