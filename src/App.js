@@ -20,11 +20,23 @@ class App extends Component {
     });
   }
   render() {
-    return (
-      <div>
-        <SeasonDisplay lat={this.state.Latitude} long={this.state.Longitude} />
-      </div>
-    );
+    if (this.state.Latitude) {
+      return (
+        <div>
+          <SeasonDisplay
+            lat={this.state.Latitude}
+            long={this.state.Longitude}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <div className='spinner-grow' />
+          <div>Loading...</div>
+        </>
+      );
+    }
   }
 }
 
